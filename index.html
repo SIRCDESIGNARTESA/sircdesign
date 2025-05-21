@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página Inicial com PDF e GammaApp</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+    .pdf-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 32px auto 16px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .site-container {
+      width: 100%;
+      height: 80vh;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    @media (max-width: 900px) {
+      .pdf-container, .site-container {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- PDF no topo da página -->
+  <div class="pdf-container">
+    <embed src="folder.pdf" type="application/pdf" width="100%" height="600px" />
+    <p style="text-align:center;">
+      <a href="folder.pdf" target="_blank">Baixar PDF</a>
+    </p>
+  </div>
+
+  <!-- Site GammaApp incorporado abaixo do PDF -->
+  <div class="site-container">
+    <iframe src="https://copy-of-catalogo-final-c-abfi8fj.gamma.site/"
+            width="100%"
+            height="100%"
+            style="border:none;"
+            title="Catálogo GammaApp"></iframe>
+  </div>
+</body>
+</html>
