@@ -22,7 +22,6 @@
       display: block;
       margin: 0 auto 12px auto;
       border-radius: 0 0 24px 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
     .catalogo-container {
       width: 100%;
@@ -41,10 +40,11 @@
       border: none;
       background: #fafaf8;
       margin-bottom: 8px;
+      display: block;
     }
     .download-btn {
       display: inline-block;
-      margin: 16px auto 0 auto;
+      margin: 16px auto 24px auto;
       padding: 14px 32px;
       font-size: 1.1em;
       background: #2d8f5c;
@@ -82,12 +82,9 @@
       <a href="Catalogo.pdf" download class="download-btn">Baixar Catálogo em PDF</a>
     </div>
 
-    <!-- Catálogo em PDF incorporado como continuação -->
+    <!-- Catálogo em PDF incorporado de forma fluida -->
     <div class="catalogo-container">
       <embed src="Catalogo.pdf" type="application/pdf" class="catalogo-pdf" />
-      <p>
-        <a href="Catalogo.pdf" download class="download-btn">Baixar Catálogo em PDF</a>
-      </p>
     </div>
   </div>
 </body>
