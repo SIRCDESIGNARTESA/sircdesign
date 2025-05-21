@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="8; url=https://gamma.app/docs/uitith9859takp2#card-wc40c10xz18khit">
-  <title>Bem-vindo à SIRC DESIGN ARTESÃ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página Inicial com PDF e GammaApp</title>
   <style>
-    body {
+    body, html {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      padding: 40px;
-      background-color: #f8f8f8;
-      color: #333;
-      text-align: center;
+      background: #fff;
     }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    .pdf-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 32px auto 16px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      overflow: hidden;
     }
-    h1 {
-      color: #008060;
+    .site-container {
+      width: 100%;
+      height: 80vh;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    @media (max-width: 900px) {
+      .pdf-container, .site-container {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>SIRC DESIGN ARTESÃ</h1>
-    <p>
-      Agora você será redirecionado para um universo de peças únicas,<br>
-      criadas com o coração para conectar você à harmonia da natureza.
+  <!-- PDF no topo da página -->
+  <div class="pdf-container">
+    <embed src="folder.pdf" type="application/pdf" width="100%" height="600px" />
+    <p style="text-align:center;">
+      <a href="folder.pdf" target="_blank">Baixar PDF</a>
     </p>
-    <p>
-      Sinta-se à vontade para apreciar cada detalhe dessas biojoias —<br>
-      expressões do meu carinho e arte.
-    </p>
-    <p>
-      <strong>Redirecionando em instantes...</strong><br>
-      Caso não aconteça automaticamente, <a href="https://gamma.app/docs/uitith9859takp2#card-wc40c10xz18khit">clique aqui</a>.
-    </p>
+  </div>
+
+  <!-- Site GammaApp incorporado abaixo do PDF -->
+  <div class="site-container">
+    <iframe src="https://copy-of-catalogo-final-c-abfi8fj.gamma.site/"
+            width="100%"
+            height="100%"
+            style="border:none;"
+            title="Catálogo GammaApp"></iframe>
   </div>
 </body>
 </html>
+
