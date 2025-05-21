@@ -15,42 +15,58 @@
     .content {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0;
+      padding: 0 0 32px 0;
     }
     .banner-image {
       width: 100%;
       display: block;
-      margin: 0 auto;
+      margin: 0 auto 12px auto;
       border-radius: 0 0 24px 24px;
-      /* Sombra super discreta para dar leveza */
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
     .catalogo-container {
       width: 100%;
-      min-height: 80vh;
-      margin: 0 auto;
+      margin: 0 auto 16px auto;
       background: #fafaf8;
       border-radius: 0 0 24px 24px;
       overflow: hidden;
-      /* Remove qualquer sombra para parecer uma continuação */
       box-shadow: none;
       border-top: none;
+      text-align: center;
     }
-    iframe {
+    .catalogo-pdf {
       width: 100%;
-      min-height: 80vh;
       height: 80vh;
+      min-height: 600px;
       border: none;
-      display: block;
       background: #fafaf8;
+      margin-bottom: 8px;
+    }
+    .download-btn {
+      display: inline-block;
+      margin: 16px auto 0 auto;
+      padding: 14px 32px;
+      font-size: 1.1em;
+      background: #2d8f5c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .download-btn:hover {
+      background: #1b5e36;
     }
     @media (max-width: 950px) {
       .content, .catalogo-container, .banner-image {
         max-width: 100%;
         border-radius: 0;
       }
-      iframe {
-        min-height: 60vh;
+      .catalogo-pdf {
+        min-height: 400px;
         height: 60vh;
       }
     }
@@ -60,9 +76,18 @@
   <div class="content">
     <!-- Imagem do folder no topo -->
     <img src="folder.jpg" alt="Sirc Design Artesã - Folder" class="banner-image" loading="eager" />
-    <!-- Catálogo GammaApp integrado como continuação -->
+
+    <!-- Botão para download do catálogo -->
     <div class="catalogo-container">
-      <iframe src="https://copy-of-catalogo-final-c-abfi8fj.gamma.site/" title="Catálogo GammaApp"></iframe>
+      <a href="Catalogo.pdf" download class="download-btn">Baixar Catálogo em PDF</a>
+    </div>
+
+    <!-- Catálogo em PDF incorporado como continuação -->
+    <div class="catalogo-container">
+      <embed src="Catalogo.pdf" type="application/pdf" class="catalogo-pdf" />
+      <p>
+        <a href="Catalogo.pdf" download class="download-btn">Baixar Catálogo em PDF</a>
+      </p>
     </div>
   </div>
 </body>
