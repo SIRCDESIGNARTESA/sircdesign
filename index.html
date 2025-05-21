@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sirc Design Artesã</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fafaf8;
+      color: #222;
+    }
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .banner-image {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 0 0 24px 24px;
+      /* Sombra super discreta para dar leveza */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .catalogo-container {
+      width: 100%;
+      min-height: 80vh;
+      margin: 0 auto;
+      background: #fafaf8;
+      border-radius: 0 0 24px 24px;
+      overflow: hidden;
+      /* Remove qualquer sombra para parecer uma continuação */
+      box-shadow: none;
+      border-top: none;
+    }
+    iframe {
+      width: 100%;
+      min-height: 80vh;
+      height: 80vh;
+      border: none;
+      display: block;
+      background: #fafaf8;
+    }
+    @media (max-width: 950px) {
+      .content, .catalogo-container, .banner-image {
+        max-width: 100%;
+        border-radius: 0;
+      }
+      iframe {
+        min-height: 60vh;
+        height: 60vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <!-- Imagem do folder no topo -->
+    <img src="folder.jpg" alt="Sirc Design Artesã - Folder" class="banner-image" loading="eager" />
+    <!-- Catálogo GammaApp integrado como continuação -->
+    <div class="catalogo-container">
+      <iframe src="https://copy-of-catalogo-final-c-abfi8fj.gamma.site/" title="Catálogo GammaApp"></iframe>
+    </div>
+  </div>
+</body>
+</html>
