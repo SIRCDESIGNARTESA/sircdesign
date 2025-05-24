@@ -1,260 +1,172 @@
-<article class="produto">
-  <img src="img/img_1_1.jpeg" alt="Colar Jacarandá CJ01" />
-  <h3>Colar Jacarandá CJ01</h3>
-  <p>
-    Material: fio encerado marrom, sementes de Paxiúba, Paxiubão, Buritirana, Açaí e casca de jacarandá do cerrado.<br>
-    Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.
-  </p>
-  <p class="preco">R$ 159,00</p>
-  <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Colar%20Jacarandá%20CJ01" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-</article>
-<!DOCTYPE html>
+# Este Ã© um exemplo conceitual.
+# Para rodar, vocÃª precisaria instalar a biblioteca FPDF:
+# pip install fpdf
+
+from fpdf import FPDF
+
+class PedidoPDF(FPDF):
+    def header(self):
+        # CabeÃ§alho de cada pÃ¡gina
+        self.set_font('Arial', 'B', 16)
+        self.cell(0, 10, 'Sir Design ArtesÃ£', 0, 1, 'C')
+        self.set_font('Arial', '', 12)
+        self.cell(0, 10, 'Pedidos de PeÃ§as', 0, 1, 'C')
+        self.ln(10) # Linha em branco
+
+    def footer(self):
+        # RodapÃ© de cada pÃ¡gina (opcional)
+        self.set_y(-15)
+        self.set_font('Arial', 'I', 8)
+        self.cell(0, 10, f'PÃ¡gina {self.page_no()}', 0, 0, 'C')
+
+    def add_pedido_block(self, pedido_num, nome_cliente, telefone, endereco, estabelecimento, tipo):
+        # Este mÃ©todo adicionaria um bloco de pedido
+        self.set_font('Arial', 'B', 10)
+        self.cell(0, 7, f'Pedido NÂº: {pedido_num}', 0, 1, 'L')
+        self.set_font('Arial', '', 10)
+        self.cell(0, 7, f'Nome do Cliente: {nome_cliente}', 0, 1, 'L')
+        self.cell(0, 7, f'Telefone/WhatsApp: {telefone}', 0, 1, 'L')
+        self.cell(0, 7, f'EndereÃ§o: {endereco}', 0, 1, 'L')
+        self.cell(0, 7, f'Estabelecimento: {estabelecimento}', 0, 1, 'L')
+        self.cell(0, 7, f'Tipo: {tipo}', 0, 1, 'L')
+
+        self.ln(2) # Pequeno espaÃ§o
+
+        # Exemplo de tabela (muito simplificado, precisaria de mais colunas e formataÃ§Ã£o)
+        self.set_font('Arial', 'B', 9)
+        self.cell(40, 7, 'CÃ³digo da PeÃ§a', 1, 0, 'C')
+        self.cell(30, 7, 'Quantidade', 1, 0, 'C')
+        self.cell(40, 7, 'Valor UnitÃ¡rio', 1, 0, 'C')
+        self.cell(40, 7, 'Valor Total', 1, 1, 'C') # 1 para quebrar a linha
+
+        self.set_font('Arial', '', 9)
+        # Linhas de preenchimento da tabela (seriam dinÃ¢micas)
+        for _ in range(5): # 5 linhas para itens
+            self.cell(40, 7, '', 1, 0, 'L')
+            self.cell(30, 7, '', 1, 0, 'L')
+            self.cell(40, 7, '', 1, 0, 'L')
+            self.cell(40, 7, '', 1, 1, 'L')
+
+        self.ln(2) # Pequeno espaÃ§o
+        self.cell(0, 7, 'Subtotal do Pedido: R$ ______________', 0, 1, 'L')
+        self.cell(0, 7, 'Frete/Entrega: R$ _______________', 0, 1, 'L')
+        self.cell(0, 7, 'Valor Total do Pedido: R$ _______________', 0, 1, 'L')
+        self.cell(0, 7, 'Data do Pedido: ____/____/_______', 0, 1, 'L')
+        self.cell(0, 7, 'Data Prevista de Entrega: ____/____/_______', 0, 1, 'L')
+        self.cell(0, 7, 'ObservaÃ§Ãµes: ____________________________________________________', 0, 1, 'L')
+        self.ln(10) # EspaÃ§o entre os blocos
+
+# --- Uso do Script (Exemplo) ---
+# pdf = PedidoPDF('P', 'mm', 'A4')
+# pdf.add_page()
+
+# # Adicione quantos blocos de pedido vocÃª precisar
+# pdf.add_pedido_block(
+#     "001",
+#     "Maria Silva",
+#     "(11) 98765-4321",
+#     "Rua das Flores, 123 - Apt 45",
+#     "Loja X",
+#     "Brinco"
+# )
+
+# # VocÃª precisaria de lÃ³gica para controlar a posiÃ§Ã£o e garantir que os blocos
+# # caibam na pÃ¡gina ou adicionem novas pÃ¡ginas automaticamente.
+# # pdf.add_pedido_block(...) # Adicionar outro bloco
+
+# # pdf.output("controle_pedidos_sir_design.pdf")
+# # print("PDF gerado com sucesso!")<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sirc Design Artesã - Catálogo Completo</title>
+  <title>CatÃ¡logo SIRC DESIGN ARTESÃƒ</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fafaf8;
+    /* Reset bÃ¡sico */
+    * {
       margin: 0;
       padding: 0;
-      color: #222;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px;
-    }
-    .banner {
-      width: 100%;
-      max-width: 900px;
-      display: block;
-      margin: 0 auto 32px auto;
-      border-radius: 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-    header h1 {
-      color: #3a6647;
-      margin-bottom: 8px;
-    }
-    header p {
-      font-size: 1.1em;
-      color: #555;
-    }
-    h2 {
-      color: #2d8f5c;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .produtos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-    }
-    .produto {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 270px;
-      padding: 16px;
       box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      line-height: 1.5;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
+      padding: 1rem;
     }
-    .produto img {
+
+    .image-column {
+      width: 100%;
+      max-width: 900px; /* limite mÃ¡ximo para nÃ£o ficar muito largo em telas grandes */
+    }
+
+    .image-column img {
       width: 100%;
       height: auto;
-      max-width: 100%;
       display: block;
-      background: #f4f4f4;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      padding: 4px;
-      object-fit: contain;
+      margin-bottom: 0; /* sem espaÃ§os entre imagens para parecer pÃ¡gina contÃ­nua */
+      user-select: none;
+      -webkit-user-drag: none;
     }
-    .produto h3 {
-      margin: 8px 0;
-      color: #2d8f5c;
-      font-size: 1.1em;
-    }
-    .produto p {
-      margin: 6px 0;
-      color: #555;
-      font-size: 0.97em;
-    }
-    .preco {
-      font-weight: bold;
-      font-size: 1.1em;
-      color: #1b5e36;
-      margin: 12px 0;
-    }
-    .botao-contato {
-      background-color: #2d8f5c;
+
+    /* BotÃ£o de download */
+    #download-btn {
+      margin: 2.5rem 0 3rem 0;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: #007bff;
       color: white;
-      padding: 10px 24px;
-      border-radius: 8px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
       text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-      margin-top: auto;
-      display: inline-block;
-    }
-    .botao-contato:hover {
-      background-color: #1b5e36;
-    }
-    footer {
       text-align: center;
-      padding: 20px 0;
-      background: #f0f0f0;
-      color: #666;
-      margin-top: 48px;
-      font-size: 0.9em;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+      max-width: 900px;
+      width: 100%;
+      user-select: none;
     }
-    @media (max-width: 700px) {
-      .produtos {
-        flex-direction: column;
-        align-items: center;
-      }
-      .produto {
-        width: 95%;
-      }
-      .banner {
-        max-width: 100%;
-        border-radius: 0;
-      }
+
+    #download-btn:hover,
+    #download-btn:focus {
+      background-color: #0056b3;
+      outline: none;
+      box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Imagem folder no topo -->
-    <img src="folder.jpg" alt="Folder Sirc Design Artesã" class="banner" loading="eager" />
 
-    <header>
-      <h1>Sirc Design Artesã</h1>
-      <p>Biojoias artesanais feitas com amor e respeito à natureza</p>
-    </header>
-
-    <h2>Catálogo Completo</h2>
-    <div class="produtos">
-
-      <!-- Produto 1 -->
-      <article class="produto">
-        <img src="img/img_1_1.jpeg" alt="Colar Jacarandá CJ01" />
-        <h3>Colar Jacarandá CJ01</h3>
-        <p>Material: fio encerado marrom, sementes de Paxiúba, Paxiubão, Buritirana, Açaí e casca de jacarandá do cerrado.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$159,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Colar%20Jacarandá%20CJ01" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 2 -->
-      <article class="produto">
-        <img src="img/img_1_2.jpeg" alt="Max Colar Açaí MA01" />
-        <h3>Max Colar Açaí MA01</h3>
-        <p>Material: fios encerado marrom e palha, sementes de Açaí de vários tamanhos e cores vivas. Feito com vários fios entremeados entre si, dando um visual de beleza e exclusividade. Pode ser usado de três formas diferentes.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$158,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Max%20Colar%20Açaí%20MA01" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 3 -->
-      <article class="produto">
-        <img src="img/img_1_3.jpeg" alt="Max Colar Açaí MA02" />
-        <h3>Max Colar Açaí MA02</h3>
-        <p>Material: fio de algodão na cor marrom e sementes de Açaí vermelhas. Um colar exclusivo pra você causar onde quer que vá.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$148,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Max%20Colar%20Açaí%20MA02" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 4 -->
-      <article class="produto">
-        <img src="img/img_1_4.jpeg" alt="Max Colar Açaí MA03" />
-        <h3>Max Colar Açaí MA03</h3>
-        <p>Material: fio de encerado na cor palha e sementes de Açaí naturais e rajadas.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$89,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Max%20Colar%20Açaí%20MA03" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 5 -->
-      <article class="produto">
-        <img src="img/img_2_1.jpeg" alt="Max Colar Açaí MA04" />
-        <h3>Max Colar Açaí MA04</h3>
-        <p>Material: fio encerado na cor palha com sementes de Açaí naturais e continhas coloridas de madeira. Um lindo e delicado colar pra completar sua beleza e te aproximar da natureza.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$79,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Max%20Colar%20Açaí%20MA04" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 6 -->
-      <article class="produto">
-        <img src="img/img_2_2.jpeg" alt="Max Colar de Açaí MA05" />
-        <h3>Max Colar de Açaí MA05</h3>
-        <p>Material: fio encerado na cor marrom e sementes de Açaí verdes e vermelhas.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$158,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Max%20Colar%20de%20Açaí%20MA05" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 7 -->
-      <article class="produto">
-        <img src="img/img_2_3.jpeg" alt="Colar Jarina Fatiada CJ02" />
-        <h3>Colar Jarina Fatiada CJ02</h3>
-        <p>Material: fio encerado na cor marrom e sementes de Açaí pretas e corais com três pendentes fatiados de Jarina na cor preto.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$52,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Colar%20Jarina%20Fatiada%20CJ02" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 8 -->
-      <article class="produto">
-        <img src="img/img_2_4.jpeg" alt="Colar Flamboyant CF01" />
-        <h3>Colar Flamboyant CF01</h3>
-        <p>Material: fio encerado na cor marrom com sementes de Flamboyant, Jatobá e Tento Carolina.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$79,90</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Colar%20Flamboyant%20CF01" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 9 -->
-      <article class="produto">
-        <img src="img/img_2_5.jpeg" alt="Conjunto Max Colar e Brincos de Açaí MA06" />
-        <h3>Conjunto Max Colar e Brincos de Açaí MA06</h3>
-        <p>Material: fio encerado marrom e sementes de Açaí nas cores verde abacate e preta. Sinta o poder da natureza com toda sua magia embelezando seu corpo!<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$198,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Conjunto%20Max%20Colar%20e%20Brincos%20de%20Açaí%20MA06" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Produto 10 -->
-      <article class="produto">
-        <img src="img/img_2_6.jpeg" alt="Colar Pereirinho CP01" />
-        <h3>Colar Pereirinho CP01</h3>
-        <p>Material: fio encerado e sementes de Jatobá, Paxiubão e Açaí e Pereirinho. Um colar exclusivo e lindo pra completar sua beleza e fazer muito sucesso.<br>
-        Por se tratar de uma peça montada artesanalmente, utilizando produtos naturais, pode haver variação de cor e tamanho nas peças.</p>
-        <p class="preco">R$195,00</p>
-        <a href="https://wa.me/5591991272792?text=Tenho%20interesse%20no%20Colar%20Pereirinho%20CP01" target="_blank" class="botao-contato">Pedir pelo WhatsApp</a>
-      </article>
-
-      <!-- Repita o mesmo padrão para todas as 112 peças, trocando imagem, nome, descrição e preço conforme o catálogo -->
-
-    </div>
-
-    <footer>
-      <p>© 2025 Sirc Design Artesã - Todos os direitos reservados.</p>
-      <p>Contato: <a href="mailto:mmibcotijuba@yahoo.com.br">mmibcotijuba@yahoo.com.br</a> | WhatsApp: <a href="https://wa.me/5591991272792">(91) 99127-2792</a></p>
-    </footer>
+  <div class="image-column" aria-label="CatÃ¡logo visual">
+    <img src="site1.jpg" alt="PÃ¡gina 1 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site2.png" alt="PÃ¡gina 2 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site3.png" alt="PÃ¡gina 3 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site4.png" alt="PÃ¡gina 4 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site5.png" alt="PÃ¡gina 5 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site6.png" alt="PÃ¡gina 6 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site7.png" alt="PÃ¡gina 7 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site8.png" alt="PÃ¡gina 8 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site9.png" alt="PÃ¡gina 9 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site10.png" alt="PÃ¡gina 10 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site11.png" alt="PÃ¡gina 11 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site12.png" alt="PÃ¡gina 12 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
+    <img src="site13.png" alt="PÃ¡gina 13 do catÃ¡logo SIRC DESIGN ARTESÃƒ" />
   </div>
+
+  <a
+    id="download-btn"
+    href="CATALOGO%20SIRC%20DESIGN%20ARTES%C3%83.pdf"
+    download="CATALOGO_SIRC_DESIGN_ARTESA.pdf"
+    aria-label="Baixar catÃ¡logo completo em PDF"
+  >
+    Baixar CatÃ¡logo Completo
+  </a>
+
 </body>
 </html>
