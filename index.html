@@ -3,13 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Catálogo com Música de Fundo</title>
+  <title>Catálogo SIRC DESIGN ARTESÃ</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .image-column {
+      width: 100%;
+      max-width: 900px; /* limite máximo para telas grandes */
+    }
+
+    .image-column img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 0; /* sem espaço entre imagens para continuidade */
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Botão de download */
+    #download-btn {
+      margin: 2.5rem 0 3rem 0;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+      max-width: 900px;
+      width: 100%;
+      user-select: none;
+      display: inline-block;
+    }
+
+    #download-btn:hover,
+    #download-btn:focus {
+      background-color: #0056b3;
+      outline: none;
+      box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+    }
+
+    /* Player de áudio */
+    audio {
+      margin-top: 1rem;
+      max-width: 900px;
+      width: 100%;
+      outline: none;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Conteúdo do site -->
+  <div class="image-column" aria-label="Catálogo visual">
+    <img src="site1.jpg" alt="Página 1 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site2.png" alt="Página 2 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site3.png" alt="Página 3 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site4.png" alt="Página 4 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site5.png" alt="Página 5 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site6.png" alt="Página 6 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site7.png" alt="Página 7 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site8.png" alt="Página 8 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site9.png" alt="Página 9 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site10.png" alt="Página 10 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site11.png" alt="Página 11 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site12.png" alt="Página 12 do catálogo SIRC DESIGN ARTESÃ" />
+    <img src="site13.png" alt="Página 13 do catálogo SIRC DESIGN ARTESÃ" />
+  </div>
 
-  <!-- Música de fundo com controles -->
+  <a
+    id="download-btn"
+    href="CATALOGO%20SIRC%20DESIGN%20ARTES%C3%83.pdf"
+    download="CATALOGO_SIRC_DESIGN_ARTESA.pdf"
+    aria-label="Baixar catálogo completo em PDF"
+  >
+    Baixar Catálogo Completo
+  </a>
+
   <audio controls loop>
     <source src="musicaanabiojoias.mpeg" type="audio/mpeg" />
     Seu navegador não suporta o elemento de áudio.
